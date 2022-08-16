@@ -31,9 +31,10 @@ def compressed(file):
     writer = PyPDF2.PdfWriter()
 
     for page in reader.pages:
-        page.compress_content_streams()  # This is CPU intensive!
+        page.compress_content_streams()
         writer.add_page(page)
 
+    writer.add_metadata(reader.metadata)
     with open(f"{file}_compress.pdf", "wb") as f:
         writer.write(f)
 
