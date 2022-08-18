@@ -1,6 +1,10 @@
-import sys
-import os
-import PyPDF2
+try:
+    import sys
+    import os
+    import PyPDF2
+except ModuleNotFoundError:
+    import subprocess
+    subprocess.run("pip install PyPDF2")
 
 
 def collector(dirr):
